@@ -1,5 +1,6 @@
 import os
 
+
 def leia_int(msg):
     while True:
         try:
