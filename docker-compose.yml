@@ -2,7 +2,7 @@ version: '3'
 
 services:
   database:
-    image: postgres
+    image: postgres:15.2-bullseye
     restart: always
     container_name: postgres-crud
     environment:
