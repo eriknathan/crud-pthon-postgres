@@ -1,7 +1,7 @@
-from database.crud import connection
+from database import connection
 
 
-def cadastrar_pessoa(nome, idade):
+def cadastrar(nome, idade):
     """Função para cadastrar uma pessoa no banco de dados"""
     cursor = connection.cursor()
 

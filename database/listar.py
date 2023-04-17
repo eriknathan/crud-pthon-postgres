@@ -1,7 +1,7 @@
-from database.crud import connection
+from database import connection
 
 
-def listar_pessoas():
+def listar():
     """Função para listar todas as pessoas cadastradas no banco de dados"""
     cursor = connection.cursor()
 
