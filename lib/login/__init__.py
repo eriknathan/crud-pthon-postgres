@@ -12,8 +12,8 @@ def fazer_login():
     cabecalho('ENTRAR NO SISETEMA')
     login = str(input('- Login: '))
     password = getpass('- Senha: ')
-    linha()
 
+    linha()
     if login == usuario_correto and password == senha_correta:
         print('Acessando sistema...')
         time.sleep(2)

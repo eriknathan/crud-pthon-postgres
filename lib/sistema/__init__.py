@@ -1,7 +1,7 @@
 import time
 import database
 
-from lib.interface import cabecalho, limpa_tela
+from lib.interface import cabecalho, limpa_tela, linha
 from lib.interface.menu import menu
 
 from lib.sistema.listar_pessoa import listar_pessoa
@@ -17,7 +17,6 @@ def sistema():
             'Editar Pessoas',
             'Excluir Pessoas',
             'Sair do Sistema'])
-
         if opcao == 1:
             limpa_tela()
             listar_pessoa()
