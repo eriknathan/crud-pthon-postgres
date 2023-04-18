@@ -1,5 +1,5 @@
 @Library('jenkins-lib') _
 
 crudPythonPostgres(
-	projectName: "crud_py_postgres"
+	projectName: "crud-py-postgres"
 )
