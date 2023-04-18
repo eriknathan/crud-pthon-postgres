@@ -1,4 +1,7 @@
+import time
+
 import database
+from lib.interface import cabecalho,linha
 
 
 # Função para validar o CPF
@@ -38,13 +41,19 @@ def validar_cpf(cpf):
 
 
 def cadastrar_pessoa():
-    nome = input("Digite o nome da pessoa: ")
-    idade = int(input("Digite a idade da pessoa: "))
-    cpf = input("Digite o cpf: ")
+    cabecalho("CADASTRAR PESSOA")
+
+    nome = input("- Digite o nome da pessoa: ")
+    idade = int(input("- Digite a idade da pessoa: "))
+    cpf = input("- Digite o CPF: ")
+
+    cpf = cpf.replace(".", "").replace("-", "")
 
     if validar_cpf(cpf):
         database.cadastrar(nome, idade, cpf)
+        print(linha())
         print("Pessoa cadastrada com sucesso!")
+        time.sleep(1)
     else:
         print('CPF inválido!')
         return cadastrar_pessoa()

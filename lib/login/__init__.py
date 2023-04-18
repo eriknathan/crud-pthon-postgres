@@ -13,7 +13,8 @@ def fazer_login():
     login = str(input('- Login: '))
     password = getpass('- Senha: ')
 
-    linha()
+    print(linha())
+
     if login == usuario_correto and password == senha_correta:
         print('Acessando sistema...')
         time.sleep(2)

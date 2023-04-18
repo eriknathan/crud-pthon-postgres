@@ -25,3 +25,10 @@ def listar():
     pessoas = cursor.fetchall()
     cursor.close()
     return pessoas
+
+
+def excluir(id):
+    cursor = connection.cursor()
+    cursor.execute("DELETE FROM pessoas WHERE id = %s", (id,))
+    connection.commit()
+    cursor.close()

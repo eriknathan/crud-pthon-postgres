@@ -1,8 +1,14 @@
+import os
+from lib.interface import linha, cabecalho
 import database
 
 
 def listar_pessoa():
     pessoas = database.listar()
-    print("Lista de pessoas cadastradas:")
+    cabecalho("PESSOAS CADASTRADAS")
     for pessoa in pessoas:
-        print(f"ID: {pessoa[0]} - Nome: {pessoa[1]} - Idade: {pessoa[2]} - CPF: {pessoa[3]}")
+        print(f"\033[34mID:\033[m {pessoa[0]}{os.linesep}"
+              f"\033[34mNome:\033[m {pessoa[1]}{os.linesep}"
+              f"\033[34mIdade:\033[m {pessoa[2]}{os.linesep}"
+              f"\033[34mCPF:\033[m {pessoa[3]}{os.linesep}{linha()}")
+
