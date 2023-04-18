@@ -3,7 +3,6 @@ from getpass import getpass
 from lib.sistema import sistema
 import time
 
-
 usuario_correto = 'admin'
 senha_correta = 'admin'
 
