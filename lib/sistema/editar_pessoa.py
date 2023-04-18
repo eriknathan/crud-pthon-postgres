@@ -7,7 +7,7 @@ import time
 def editar_pessoa():
     cabecalho("EDITAR PESSOA")
 
-    id = int(input("Digite o ID da pessoa que deseja editar: "))
+    id = int(input("ID que deseja editar: "))
     print(linha())
 
     print('Você deseja editar: ')
