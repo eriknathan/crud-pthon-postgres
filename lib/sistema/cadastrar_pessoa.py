@@ -1,5 +1,5 @@
 import time
-
+import requests
 import database
 from lib.interface import cabecalho,linha
 
@@ -41,16 +41,24 @@ def validar_cpf(cpf):
 
 
 def cadastrar_pessoa():
+    global data
     cabecalho("CADASTRAR PESSOA")
 
     nome = input("- Digite o nome da pessoa: ")
     idade = int(input("- Digite a idade da pessoa: "))
     cpf = input("- Digite o CPF: ")
-
     cpf = cpf.replace(".", "").replace("-", "")
 
+    cep = input("- Digite o CEP: ")
+
+    url = f"https://viacep.com.br/ws/{cep}/json/"
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        data = response.json()
+
     if validar_cpf(cpf):
-        database.cadastrar(nome, idade, cpf)
+        database.cadastrar(nome, idade, cpf, data)
         print(linha())
         print("Pessoa cadastrada com sucesso!")
         time.sleep(1)

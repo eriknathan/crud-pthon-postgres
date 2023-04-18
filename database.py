@@ -10,10 +10,12 @@ connection = psycopg2.connect(
 )
 
 
-def cadastrar(nome, idade, cpf):
+def cadastrar(nome, idade, cpf, data):
     """Função para cadastrar uma pessoa no banco de dados"""
     cursor = connection.cursor()
-    cursor.execute("INSERT INTO pessoas (nome, idade, cpf) VALUES (%s, %s, %s)", (nome, idade, cpf))
+    cursor.execute("INSERT INTO pessoas (nome, idade, cpf, cep, logradouro, bairro, localidade, uf) "
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
+                   (nome, idade, cpf, data['cep'], data['logradouro'], data['bairro'], data['localidade'], data['uf']))
     connection.commit()
     cursor.close()
 
