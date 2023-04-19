@@ -1,5 +1,6 @@
 CREATE TABLE pessoas (
     id SERIAL PRIMARY KEY,
+    matricula VARCHAR(10),
     nome VARCHAR(100),
     idade INTEGER,
     cpf VARCHAR(11) NOT NULL,

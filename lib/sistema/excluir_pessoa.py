@@ -6,8 +6,8 @@ from lib.interface import cabecalho, linha, limpa_tela
 
 def excluir_pessoa():
     cabecalho("EXCLUIR PESSOA")
-    id = int(input("ID que você quer excluir: "))
-    database.excluir(id)
+    matricula = int(input("Matricula que você quer excluir: "))
+    database.excluir(matricula)
     print(linha())
     print("Pessoa excluida com sucesso!")
     time.sleep(2)

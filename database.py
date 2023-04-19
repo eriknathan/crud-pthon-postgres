@@ -10,12 +10,12 @@ connection = psycopg2.connect(
 )
 
 
-def cadastrar(nome, idade, cpf, data):
+def cadastrar(matricula, nome, idade, cpf, data):
     """Função para cadastrar uma pessoa no banco de dados"""
     cursor = connection.cursor()
-    cursor.execute("INSERT INTO pessoas (nome, idade, cpf, cep, logradouro, bairro, localidade, uf) "
-                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-                   (nome, idade, cpf, data['cep'], data['logradouro'], data['bairro'], data['localidade'], data['uf']))
+    cursor.execute("INSERT INTO pessoas (matricula, nome, idade, cpf, cep, logradouro, bairro, localidade, uf) "
+                   "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                   (matricula, nome, idade, cpf, data['cep'], data['logradouro'], data['bairro'], data['localidade'], data['uf']))
     connection.commit()
     cursor.close()
 
@@ -29,44 +29,44 @@ def listar():
     return pessoas
 
 
-def editar(id, nome, idade, cpf):
+def editar(matricula, nome, idade, cpf):
     cursor = connection.cursor()
-    cursor.execute("UPDATE pessoas SET nome = %s, idade = %s, cpf = %s WHERE id = %s", (nome, idade, cpf, id))
+    cursor.execute("UPDATE pessoas SET nome = %s, idade = %s, cpf = %s WHERE matricula = '%s'", (nome, idade, cpf, id))
     connection.commit()
     cursor.close()
 
 
-def editar_nome(id, nome):
+def editar_nome(matricula, nome):
     cursor = connection.cursor()
-    cursor.execute("UPDATE pessoas SET nome = %s WHERE id = %s", (nome, id))
+    cursor.execute("UPDATE pessoas SET nome = %s WHERE matricula = '%s'", (nome, matricula))
     connection.commit()
     cursor.close()
 
 
-def editar_idade(id, idade):
+def editar_idade(matricula, idade):
     cursor = connection.cursor()
-    cursor.execute("UPDATE pessoas SET idade = %s WHERE id = %s", (idade, id))
+    cursor.execute("UPDATE pessoas SET idade = %s WHERE matricula = '%s'", (idade, matricula))
     connection.commit()
     cursor.close()
 
 
-def editar_cpf(id, cpf):
+def editar_cpf(matricula, cpf):
     cursor = connection.cursor()
-    cursor.execute("UPDATE pessoas SET cpf = %s WHERE id = %s", (cpf, id))
+    cursor.execute("UPDATE pessoas SET cpf = %s WHERE matricula = '%s'", (cpf, matricula))
     connection.commit()
     cursor.close()
 
 
-def excluir(id):
+def excluir(matricula):
     cursor = connection.cursor()
-    cursor.execute("DELETE FROM pessoas WHERE id = %s", (id,))
+    cursor.execute("DELETE FROM pessoas WHERE matricula = '%s'", (matricula,))
     connection.commit()
     cursor.close()
 
 
-def pesquisar(id):
+def pesquisar(matricula):
     cursor = connection.cursor()
-    cursor.execute("SELECT * FROM pessoas WHERE id = %s", (id,))
+    cursor.execute("SELECT * FROM pessoas WHERE matricula = '%s'", (matricula,))
     pessoas = cursor.fetchall()
     cursor.close()
     return pessoas

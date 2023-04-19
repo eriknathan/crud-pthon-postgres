@@ -1,10 +1,11 @@
 import time
+import datetime
+import random
 import requests
 import database
 from lib.interface import cabecalho,linha
 
 
-# Função para validar o CPF
 def validar_cpf(cpf):
     # Remover os pontos e traços do CPF
     cpf = cpf.replace(".", "").replace("-", "")
@@ -40,10 +41,19 @@ def validar_cpf(cpf):
         return False
 
 
+def gerar_matricula():
+    data_atual = datetime.datetime.now()
+    data_formatada = data_atual.strftime('%Y%m%d')
+    numero_aleatorio = random.randint(10, 99)
+    matricula = f"{data_formatada}{numero_aleatorio}"
+    return matricula
+
+
 def cadastrar_pessoa():
     global data
     cabecalho("CADASTRAR PESSOA")
 
+    matricula = gerar_matricula()
     nome = input("- Digite o nome da pessoa: ")
     idade = int(input("- Digite a idade da pessoa: "))
     cpf = input("- Digite o CPF: ")
@@ -58,7 +68,7 @@ def cadastrar_pessoa():
         data = response.json()
 
     if validar_cpf(cpf):
-        database.cadastrar(nome, idade, cpf, data)
+        database.cadastrar(matricula, nome, idade, cpf, data)
         print(linha())
         print("Pessoa cadastrada com sucesso!")
         time.sleep(1)
