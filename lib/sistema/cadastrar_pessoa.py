@@ -55,7 +55,10 @@ def cadastrar_pessoa():
 
     matricula = gerar_matricula()
     nome = input("- Digite o nome da pessoa: ")
-    idade = int(input("- Digite a idade da pessoa: "))
+    celular = input("- Digite o celular: ")
+    email = input("- Digite o email: ")
+    data_nasc = input("- Digite a data de nasc.: ")
+    sexo = input("- Digite o sexo: ")
     cpf = input("- Digite o CPF: ")
     cpf = cpf.replace(".", "").replace("-", "")
 
@@ -68,7 +71,7 @@ def cadastrar_pessoa():
         data = response.json()
 
     if validar_cpf(cpf):
-        database.cadastrar(matricula, nome, idade, cpf, data)
+        database.cadastrar(matricula, nome, celular, email, data_nasc, sexo, cpf, data)
         print(linha())
         print("Pessoa cadastrada com sucesso!")
         time.sleep(1)
