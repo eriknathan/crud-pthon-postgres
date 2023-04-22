@@ -2,7 +2,7 @@ import time
 import datetime
 import random
 import requests
-import database
+from db.cadastrar import cadastrar
 from lib.interface import cabecalho,linha
 
 
@@ -71,7 +71,7 @@ def cadastrar_pessoa():
         data = response.json()
 
     if validar_cpf(cpf):
-        database.cadastrar(matricula, nome, celular, email, data_nasc, sexo, cpf, data)
+        cadastrar(matricula, nome, celular, email, data_nasc, sexo, cpf, data)
         print(linha())
         print("Pessoa cadastrada com sucesso!")
         time.sleep(1)

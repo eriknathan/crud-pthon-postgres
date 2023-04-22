@@ -1,12 +1,12 @@
-import database
+from db.pesquisar import pesquisar
 import os
 from lib.interface import cabecalho, limpa_tela
 
 
 def pesquisar_pessoa():
     cabecalho("PESQUISAR PESSOAS")
-    id = int(input("Matrícula para pesquisa: "))
-    pessoas = database.pesquisar(id)
+    matricula = int(input("Matrícula para pesquisa: "))
+    pessoas = pesquisar(matricula)
     limpa_tela()
     cabecalho("PESQUISA")
     for pessoa in pessoas:

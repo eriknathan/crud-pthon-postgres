@@ -1,10 +1,10 @@
 import os
 from lib.interface import linha, cabecalho
-import database
+from db.listar import listar
 
 
 def listar_pessoa():
-    pessoas = database.listar()
+    pessoas = listar()
     cabecalho("PESSOAS CADASTRADAS")
     for pessoa in pessoas:
         print(f"\033[34mMatricula:\033[m {pessoa[1]}{os.linesep}"
